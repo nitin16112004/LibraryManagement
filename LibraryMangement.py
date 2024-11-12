@@ -1,8 +1,8 @@
 class LibraryManagment:
     def __init__(self):
-        self.books = {}  # Store book details with a dictionary
-        self.students = {}  # Store student details
-        self.issued_books = {}  # Track issued books with a dictionary
+        self.books = {}
+        self.students = {}
+        self.issued_books = {}
 
     def option(self):
         while True:
@@ -98,7 +98,5 @@ class LibraryManagment:
             else:
                 print("Invalid choice. Try again.")
 
-
-# Initialize and run the library system
 library = LibraryManagment()
 library.option()
