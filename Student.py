@@ -7,7 +7,7 @@ class Student:
         self.PhoneNo = phoneNo
 
     def GetStudentInfo(self):
-        return f"Student ID: {self.StudentId}, First Name: {self.FirstName}, Last Name: {self.NastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
+        return f"Student ID: {self.StudentId}, First Name: {self.FirstName}, Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
 
     def UpdateDetails(self, firstName=None, lastName=None, email=None, phoneNo=None):
         if firstName:
