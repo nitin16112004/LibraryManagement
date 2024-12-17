@@ -1,23 +1,23 @@
 class Book:
     def __init__(self, bookId, title, author, publishedYear, genre, totalCopies):
-        self.bookId = BookId
-        self.title = Title
-        self.author = Author
-        self.publishedYear = PublishedYear
-        self.genre = Genre
-        self.totalCopies = TotalCopies
+        self.BookId = bookId
+        self.Title = title
+        self.Author = author
+        self.PublishedYear = publishedYear
+        self.Genre = genre
+        self.TotalCopies = totalCopies
     def GetBookInfo(self):
-        return (f"Book ID: {self.bookId}, Title: {self.title}, Author: {self.author}, "
-                f"Published Year: {self.publishedYear}, Genre: {self.genre}, Total Copies: {self.totalCopies}")
+        return (f"Book ID: {self.BookId}, Title: {self.Title}, Author: {self.Author}, "
+                f"Published Year: {self.PublishedYear}, Genre: {self.Genre}, Total Copies: {self.TotalCopies}")
     def UpdateDetails(self, title=None, author=None, publishedYear=None, genre=None, totalCopies=None):
         if title:
-            self.title = title
+            self.Title = title
         if author:
-            self.author = author
+            self.Author = author
         if publishedYear:
-            self.publishedYear = publishedYear
+            self.PublishedYear = publishedYear
         if genre:
-            self.genre = genre
-        if totalCopies is not None:  # Accepts 0 as a valid update
-            self.totalCopies = totalCopies
-        return f"Book {self.bookId} details updated successfully."
+            self.Genre = genre
+        if totalCopies is not None:
+            self.TotalCopies = totalCopies
+        return f"Book {self.BookId} details updated successfully."
