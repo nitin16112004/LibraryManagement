@@ -44,12 +44,12 @@ while True:
 
     elif choice == "3":
         for student in students:
-            print(student.GetStudentInfo())
+            print(student)
 
 
     elif choice == "4":
         for book in books:
-            print(book.GetBookInfo())
+            print(book)
 
     elif choice == "5":
         if students:
