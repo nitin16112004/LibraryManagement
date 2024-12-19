@@ -9,7 +9,7 @@ class Book:
     def GetBookInfo(self):
         return (f"Book ID: {self.BookId}, Title: {self.Title}, Author: {self.Author}, "
                 f"Published Year: {self.PublishedYear}, Genre: {self.Genre}, Total Copies: {self.TotalCopies}")
-    def UpdateDetails(self, title=None, author=None, publishedYear=None, genre=None, totalCopies=None):
+    def  UpdateDetails(self, title=None, author=None, publishedYear=None, genre=None, totalCopies=None):
         if title:
             self.Title = title
         if author:
@@ -21,3 +21,7 @@ class Book:
         if totalCopies is not None:
             self.TotalCopies = totalCopies
         return f"Book {self.BookId} details updated successfully."
+
+    def __str__(self):
+        return (f"Book ID: {self.BookId}, Title: {self.Title}, Author: {self.Author}, "
+                f"Published Year: {self.PublishedYear}, Genre: {self.Genre}, Total Copies: {self.TotalCopies}")
