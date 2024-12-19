@@ -43,28 +43,13 @@ while True:
             print(f"Book '{title}' by {author} added successfully.")
 
     elif choice == "3":
-        studentId = int(input("Enter Student ID to Retrieve Info: "))
-        student_found = False
         for student in students:
-            if student.StudentId == studentId:
-                student_found = True
-                print(student.GetStudentInfo())
-                break
+            print(student.GetStudentInfo())
 
-        if not student_found:
-            print(f"Student ID {studentId} not found.")
 
     elif choice == "4":
-        bookId = int(input("Enter Book ID to Retrieve Info: "))
-        book_found = False
         for book in books:
-            if book.BookId == bookId:
-                book_found = True
-                print(book.GetBookInfo())
-                break
-
-        if not book_found:
-            print(f"Book ID {bookId} not found.")
+            print(book.GetBookInfo())
 
     elif choice == "5":
         if students:
