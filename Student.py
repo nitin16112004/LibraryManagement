@@ -21,7 +21,7 @@ class Student:
         return f"Student {self.StudentId} details updated successfully."
 
     def DeleteStudent(self):
-        return f"Student with ID {self.StudentId} has been deleted."
+        return f"Student with ID {self.StudentId} has been deleted.{__str__()}"
 
     def __str__(self):
         return f"Student ID: {self.StudentId}, First Name: {self.FirstName}, Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"

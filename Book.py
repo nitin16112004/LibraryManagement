@@ -23,7 +23,7 @@ class Book:
         return f"Book {self.BookId} details updated successfully."
 
     def DeleteBook(self):
-        return f"Book with ID {self.BookId} has been deleted."
+        return f"Book with ID {self.BookId} has been deleted {__str__()}"
 
     def __str__(self):
         return (f"Book ID: {self.BookId}, Title: {self.Title}, Author: {self.Author}, "
