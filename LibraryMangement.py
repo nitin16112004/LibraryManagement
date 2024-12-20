@@ -57,7 +57,7 @@ while True:
         studentId = int(input("Enter Student ID to delete: "))
         for student in students:
             if student.StudentId == studentId:
-                s=students.remove(student)
+                students.remove(student)
                 print(f"Student with ID {studentId} has been removed")
             else:
                 print(f"Student ID not found")
@@ -70,8 +70,6 @@ while True:
                 print(f"Book with ID {bookId} has been removed")
             else:
                 print(f"Book ID not found")
-
-
 
     elif choice == "7":
         if students:
