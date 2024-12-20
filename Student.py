@@ -25,4 +25,3 @@ class Student:
 
     def __str__(self):
         return f"Student ID: {self.StudentId}, First Name: {self.FirstName}, Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
-
