@@ -23,7 +23,7 @@ while True:
         firstName = input("Enter First Name: ")
         lastName = input("Enter Last Name: ")
         email = input("Enter Email: ")
-        phoneNo = int(input("Enter Phone Number: "))
+        phoneNo = input("Enter Phone Number: ")
 
         if any(student.StudentId == studentId for student in students):
             print(f"Student ID {studentId} already exists.")
@@ -35,9 +35,9 @@ while True:
         bookId = int(input("Enter Book ID: "))
         title = input("Enter Book Title: ")
         author = input("Enter Author Name: ")
-        publishedYear = int(input("Enter Published Year: "))
+        publishedYear = input("Enter Published Year: ")
         genre = input("Enter Genre: ")
-        totalCopies = int(input("Enter Total Copies: "))
+        totalCopies = input("Enter Total Copies: ")
 
         if any(book.BookId == bookId for book in books):
             print(f"Book ID {bookId} already exists.")
@@ -60,8 +60,8 @@ while True:
                 students.remove(student)
                 print(f"Student with ID {studentId} has been removed")
                 break
-            else:
-                print(f"Student ID not found")
+        else:
+            print(f"Student ID not found")
 
     elif choice == "6":
         bookId = int(input("Enter Book ID to delete: "))
@@ -70,8 +70,8 @@ while True:
                 b=books.remove(book)
                 print(f"Book with ID {bookId} has been removed")
                 break
-            else:
-                print(f"Book ID not found")
+        else:
+            print(f"Book ID not found")
 
     elif choice == "7":
         studentId = int(input("Enter Student ID to update:"))
@@ -80,7 +80,7 @@ while True:
                 firstName = input("Enter New First Name:") or student.FirstName
                 lastName = input("Enter New Last Name:") or student.LastName
                 email = input("Enter New Email:") or student.Email
-                phoneNo = int(input("Enter New Phone No.:")) or student.PhoneNo
+                phoneNo = input("Enter New Phone No.:") or student.PhoneNo
                 print(student.UpdateDetails(firstName,lastName,email,phoneNo))
                 break
         else:
@@ -92,9 +92,9 @@ while True:
             if book.BookId==bookId:
                 title = input("Enter New Title:") or book.Title
                 author = input("Enter New Author:") or book.Author
-                publishedYear = int(input("Enter New Published Year:")) or book.PublishedYear
+                publishedYear = input("Enter New Published Year:") or book.PublishedYear
                 genre = input("Enter New Genre:") or book.Genre
-                totalCopies = int(input("Enter New Total Copies:")) or book.TotalCopies
+                totalCopies = input("Enter New Total Copies:") or book.TotalCopies
                 print(book.UpdateDetails(title,author,publishedYear,genre,totalCopies))
                 break
         else:
