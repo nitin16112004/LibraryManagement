@@ -59,6 +59,7 @@ while True:
             if student.StudentId == studentId:
                 students.remove(student)
                 print(f"Student with ID {studentId} has been removed")
+                break
             else:
                 print(f"Student ID not found")
 
@@ -68,6 +69,7 @@ while True:
             if book.BookId == bookId:
                 b=books.remove(book)
                 print(f"Book with ID {bookId} has been removed")
+                break
             else:
                 print(f"Book ID not found")
 
@@ -80,8 +82,9 @@ while True:
                 email = input("Enter New Email:") or student.Email
                 phoneNo = int(input("Enter New Phone No.:")) or student.PhoneNo
                 print(student.UpdateDetails(firstName,lastName,email,phoneNo))
-            else:
-                print(f"Student ID {studentId} not found.")
+                break
+        else:
+            print(f"Student ID {studentId} not found.")
 
     elif choice == "8":
         bookId = int(input("Enter Book ID to update:"))
@@ -93,8 +96,9 @@ while True:
                 genre = input("Enter New Genre:") or book.Genre
                 totalCopies = int(input("Enter New Total Copies:")) or book.TotalCopies
                 print(book.UpdateDetails(title,author,publishedYear,genre,totalCopies))
-            else:
-                print(f"Book ID {bookId} not found")
+                break
+        else:
+            print(f"Book ID {bookId} not found")
 
     elif choice == "9":
         print("Exiting the system. Goodbye!")
