@@ -10,8 +10,11 @@ while True:
     print("2. Add Book")
     print("3. Get Student Info")
     print("4. Get Book Info")
-    print("5. View Library Summary")
-    print("6. Exit")
+    print("5. Delete Student")
+    print("6. Delete Book")
+    print("7. Update Student Details")
+    print("8. Update Book Details")
+    print("9. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -32,9 +35,9 @@ while True:
         bookId = int(input("Enter Book ID: "))
         title = input("Enter Book Title: ")
         author = input("Enter Author Name: ")
-        publishedYear = int(input("Enter Published Year: "))
+        publishedYear = input("Enter Published Year: ")
         genre = input("Enter Genre: ")
-        totalCopies = int(input("Enter Total Copies: "))
+        totalCopies = input("Enter Total Copies: ")
 
         if any(book.BookId == bookId for book in books):
             print(f"Book ID {bookId} already exists.")
@@ -46,27 +49,58 @@ while True:
         for student in students:
             print(student)
 
-
     elif choice == "4":
         for book in books:
             print(book)
 
     elif choice == "5":
-        if students:
-            print("\nStudents in Library:")
-            for student in students:
-                print(f"Student ID: {student.StudentId}, Name: {student.FirstName} {student.LastName}")
+        studentId = int(input("Enter Student ID to delete: "))
+        for student in students:
+            if student.StudentId == studentId:
+                students.remove(student)
+                print(f"Student with ID {studentId} has been removed")
+                break
         else:
-            print("\nNo students registered.")
-
-        if books:
-            print("\nBooks in Library:")
-            for book in books:
-                print(f"Book ID: {book.BookId}, Title: {book.Title}")
-        else:
-            print("\nNo books registered.")
+            print(f"Student ID not found")
 
     elif choice == "6":
+        bookId = int(input("Enter Book ID to delete: "))
+        for book in books:
+            if book.BookId == bookId:
+                b=books.remove(book)
+                print(f"Book with ID {bookId} has been removed")
+                break
+        else:
+            print(f"Book ID not found")
+
+    elif choice == "7":
+        studentId = int(input("Enter Student ID to update:"))
+        for student in students:
+            if student.StudentId==studentId:
+                firstName = input("Enter New First Name:") or student.FirstName
+                lastName = input("Enter New Last Name:") or student.LastName
+                email = input("Enter New Email:") or student.Email
+                phoneNo = input("Enter New Phone No.:") or student.PhoneNo
+                print(student.UpdateDetails(firstName,lastName,email,phoneNo))
+                break
+        else:
+            print(f"Student ID {studentId} not found.")
+
+    elif choice == "8":
+        bookId = int(input("Enter Book ID to update:"))
+        for book in books:
+            if book.BookId==bookId:
+                title = input("Enter New Title:") or book.Title
+                author = input("Enter New Author:") or book.Author
+                publishedYear = input("Enter New Published Year:") or book.PublishedYear
+                genre = input("Enter New Genre:") or book.Genre
+                totalCopies = input("Enter New Total Copies:") or book.TotalCopies
+                print(book.UpdateDetails(title,author,publishedYear,genre,totalCopies))
+                break
+        else:
+            print(f"Book ID {bookId} not found")
+
+    elif choice == "9":
         print("Exiting the system. Goodbye!")
         break
 

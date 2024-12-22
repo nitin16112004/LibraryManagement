@@ -6,10 +6,12 @@ class Book:
         self.PublishedYear = publishedYear
         self.Genre = genre
         self.TotalCopies = totalCopies
+
     def GetBookInfo(self):
         return (f"Book ID: {self.BookId}, Title: {self.Title}, Author: {self.Author}, "
                 f"Published Year: {self.PublishedYear}, Genre: {self.Genre}, Total Copies: {self.TotalCopies}")
-    def  UpdateDetails(self, title=None, author=None, publishedYear=None, genre=None, totalCopies=None):
+
+    def UpdateDetails(self, title=None, author=None, publishedYear=None, genre=None, totalCopies=None):
         if title:
             self.Title = title
         if author:
