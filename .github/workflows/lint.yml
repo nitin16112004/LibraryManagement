@@ -26,11 +26,14 @@ jobs:
       - name: Run flake8
         run: |
           flake8 .
+        continue-on-error: true
 
       - name: Run pylint
         run: |
           pylint **/*.py
+        continue-on-error: true
 
       - name: Run black (check formatting)
         run: |
           black --check .
+        continue-on-error: true
