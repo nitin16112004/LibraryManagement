@@ -45,7 +45,7 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: pytest                     # Identifier for test results
-          path: TestReports/report.xml     # Path to the JUnit test results file
+          path: TestReports/junit_report.xml     # Path to the JUnit test results file
           reporter: junit                  # Specify JUnit as the results format
 
       # Step 7: Upload the HTML test report as an artifact
