@@ -40,15 +40,6 @@ jobs:
       - name: Run Tests
         run: pytest
 
-      # Step 6: Use GitHub's Annotations for Test Failures
-      - name: Parse Test Results
-        uses: dorny/test-reporter@v1
-        with:
-          name: pytest                           # Identifier for test results
-          path: TestReports/junit_report.xml     # Path to the JUnit test results file
-          reporter: junit-xml                    # Specify JUnit-XML as the results format
-          fail-on-error: true                    # Fail the job if errors are found
-
       # Step 7: Upload the HTML test report as an artifact
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
