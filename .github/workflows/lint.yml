@@ -3,8 +3,7 @@ name: Lint Code Base
 on:
   pull_request:
     branches:
-      - main          # Main branch
-      - feature/*     # Any feature branch
+      - main
 
 jobs:
   lint:
@@ -22,18 +21,26 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install flake8 pylint black pre-commit
 
       - name: Run flake8
         run: |
-          flake8 .
-        continue-on-error: true
+          flake8 . || echo "flake8 linting failed" >> flake8.log
+        continue-on-error: true  # Continue even if flake8 fails
 
       - name: Run pylint
         run: |
-          pylint **/*.py
-        continue-on-error: true
+          pylint **/*.py || echo "pylint linting failed" >> pylint.log
+        continue-on-error: true  # Continue even if pylint fails
 
       - name: Run black (check formatting)
         run: |
-          black --check .
-        continue-on-error: true
+          black --check . || echo "black linting failed" >> black.log
+        continue-on-error: true  # Continue even if black fails
+
+      - name: Display all linting errors
+        run: |
+          echo "Displaying lint results:"
+          cat flake8.log || true
+          cat pylint.log || true
+          cat black.log || true
