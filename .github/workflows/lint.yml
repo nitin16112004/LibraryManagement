@@ -44,3 +44,10 @@ jobs:
           cat flake8.log || true
           cat pylint.log || true
           cat black.log || true
+
+      - name: Fail job if any linter failed
+        run: |
+          if grep -q "linting failed" flake8.log; then exit 1; fi
+          if grep -q "linting failed" pylint.log; then exit 1; fi
+          if grep -q "linting failed" black.log; then exit 1; fi
+        if: always()
