@@ -1,40 +1,56 @@
+# GitHub Actions workflow to run tests for the LibraryManagement project
 name: Run LibraryManagement Tests
 
+# Trigger workflow on push or pull request events
 on:
   push:
     branches:
-      - main
-      - feature/*
+      - main          # Main branch
+      - feature/*     # Any feature branch
   pull_request:
     branches:
-      - main
+      - main          # Pull requests targeting the main branch
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
 
     steps:
+      # Step 1: Checkout the repository code
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # Adjust to your Python version
+          python-version: '3.10'  # Specify the Python version to use
 
+      # Step 3: Install project dependencies
       - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip   # Upgrade pip to the latest version
+          pip install -r requirements.txt       # Install dependencies from requirements file
 
+      # Step 4: List contents of the test directory for verification
       - name: List Test Directory
         run: ls -R ./UnitTests
 
+      # Step 5: Execute tests using pytest
       - name: Run Tests
-        run: pytest UnitTests
+        run: pytest
 
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v3
+      # Step 6: Use GitHub's Annotations for Test Failures
+      - name: Parse Test Results
+        uses: dorny/test-reporter@v1
         with:
-          name: test-report
-          path: TestReports/
+          name: pytest                     # Identifier for test results
+          path: TestReports/report.xml     # Path to the JUnit test results file
+          reporter: junit                  # Specify JUnit as the results format
+
+      # Step 7: Upload the HTML test report as an artifact
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report            # Name of the artifact
+          path: TestReports/           # Path to the report directory
