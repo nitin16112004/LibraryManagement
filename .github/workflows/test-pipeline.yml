@@ -31,7 +31,7 @@ jobs:
         run: ls -R ./UnitTests
 
       - name: Run Tests
-        run: pytest
+        run: pytest UnitTests
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v3
