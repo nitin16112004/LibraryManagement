@@ -66,7 +66,7 @@ while True:
 
         else:
             print("Invalid choice. Please try again.")
-            # exiting the student operation
+            # exiting the student
 
     elif choice =="2":
         print("/nBook Operation")
