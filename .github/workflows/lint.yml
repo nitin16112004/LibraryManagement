@@ -1,0 +1,39 @@
+name: Lint Code Base
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install flake8 pylint black pre-commit
+
+      - name: Run flake8
+        run: |
+          flake8 .
+        continue-on-error: true  # Continue even if flake8 fails
+
+      - name: Run pylint
+        run: |
+          pylint **/*.py
+        continue-on-error: true  # Continue even if pylint fails
+
+      - name: Run black (check formatting)
+        run: |
+          black --check .
+        continue-on-error: true  # Continue even if black fails
