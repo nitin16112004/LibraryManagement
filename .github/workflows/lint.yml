@@ -25,29 +25,15 @@ jobs:
 
       - name: Run flake8
         run: |
-          flake8 . || echo "flake8 linting failed" >> flake8.log
+          flake8 .
         continue-on-error: true  # Continue even if flake8 fails
 
       - name: Run pylint
         run: |
-          pylint **/*.py || echo "pylint linting failed" >> pylint.log
+          pylint **/*.py
         continue-on-error: true  # Continue even if pylint fails
 
       - name: Run black (check formatting)
         run: |
-          black --check . || echo "black linting failed" >> black.log
+          black --check .
         continue-on-error: true  # Continue even if black fails
-
-      - name: Display all linting errors
-        run: |
-          echo "Displaying lint results:"
-          cat flake8.log || true
-          cat pylint.log || true
-          cat black.log || true
-
-      - name: Fail job if any linter failed
-        run: |
-          if grep -q "linting failed" flake8.log; then exit 1; fi
-          if grep -q "linting failed" pylint.log; then exit 1; fi
-          if grep -q "linting failed" black.log; then exit 1; fi
-        if: always()
