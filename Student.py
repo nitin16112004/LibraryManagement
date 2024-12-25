@@ -32,9 +32,13 @@ class Student:
         Retrieves the student's details in a formatted string.
 
         Returns:
-            str: A string containing the student's ID, first name, last name, email, and phone number.
+            str: A string containing the student's ID, first name,
+                    last name, email, and phone number.
         """
-        return f"Student ID: {self.StudentId}, First Name: {self.FirstName}, Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
+        return (
+            f"Student ID: {self.StudentId}, First Name: {self.FirstName},"
+            f" Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
+        )
 
     def UpdateDetails(self, firstName=None, lastName=None, email=None, phoneNo=None):
         """
@@ -64,6 +68,10 @@ class Student:
         Returns a string representation of the student's details.
 
         Returns:
-            str: A string containing the student's ID, first name, last name, email, and phone number.
+            str: A string containing the student's ID, first name,
+                    last name, email, and phone number.
         """
-        return f"Student ID: {self.StudentId}, First Name: {self.FirstName}, Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
+        return (
+            f"Student ID: {self.StudentId}, First Name: {self.FirstName},"
+            f" Last Name: {self.LastName}, Email: {self.Email}, Phone No: {self.PhoneNo}"
+        )
