@@ -45,7 +45,7 @@ while True:
                     print(f"Student with ID {studentId} has been removed")
                     break
             else:
-                print(f"Student ID not found")
+                print(f"Student ID {studentId} not found")
 
         elif Choice == "4":
             studentId = int(input("Enter Student ID to update:"))
@@ -67,8 +67,7 @@ while True:
         else:
             print("Invalid choice. Please try again.")
 
-
-    elif choice =="2":
+    elif choice == "2":
         print("/nBook Operation")
         print("1. Add Book")
         print("2. Get Book Info")
@@ -88,7 +87,9 @@ while True:
             if any(book.BookId == bookId for book in books):
                 print(f"Book ID {bookId} already exists.")
             else:
-                books.append(Book(bookId, title, author, publishedYear, genre, totalCopies))
+                books.append(
+                    Book(bookId, title, author, publishedYear, genre, totalCopies)
+                )
                 print(f"Book '{title}' by {author} added successfully.")
 
         elif Choice == "2":
@@ -99,22 +100,28 @@ while True:
             bookId = int(input("Enter Book ID to delete: "))
             for book in books:
                 if book.BookId == bookId:
-                    b=books.remove(book)
+                    books.remove(book)
                     print(f"Book with ID {bookId} has been removed")
                     break
             else:
-                print(f"Book ID not found")
+                print(f"Book ID {bookId} not found")
 
         elif Choice == "4":
             bookId = int(input("Enter Book ID to update:"))
             for book in books:
-                if book.BookId==bookId:
+                if book.BookId == bookId:
                     title = input("Enter New Title:") or book.Title
                     author = input("Enter New Author:") or book.Author
-                    publishedYear = input("Enter New Published Year:") or book.PublishedYear
+                    publishedYear = (
+                        input("Enter New Published Year:") or book.PublishedYear
+                    )
                     genre = input("Enter New Genre:") or book.Genre
                     totalCopies = input("Enter New Total Copies:") or book.TotalCopies
-                    print(book.UpdateDetails(title,author,publishedYear,genre,totalCopies))
+                    print(
+                        book.UpdateDetails(
+                            title, author, publishedYear, genre, totalCopies
+                        )
+                    )
                     break
             else:
                 print(f"Book ID {bookId} not found")
