@@ -19,7 +19,7 @@ while True:
         print("3. Delete Student")
         print("4. Update Student Details")
         print("5. Exit")
-        Choice = input("Enter your choice")
+        Choice = input("Enter your choice: ")
         if Choice == "1":
             studentId = int(input("Enter Student ID: "))
             firstName = input("Enter First Name: ")
@@ -39,9 +39,9 @@ while True:
 
         elif Choice == "3":
             studentId = int(input("Enter Student ID to delete: "))
-            for student in students:
+            for index, student in enumerate(students):
                 if student.StudentId == studentId:
-                    students.remove(student)
+                    del students[index]
                     print(f"Student with ID {studentId} has been removed")
                     break
             else:
@@ -98,9 +98,9 @@ while True:
 
         elif Choice == "3":
             bookId = int(input("Enter Book ID to delete: "))
-            for book in books:
+            for index, book in enumerate(books):
                 if book.BookId == bookId:
-                    books.remove(book)
+                    del books[index]
                     print(f"Book with ID {bookId} has been removed")
                     break
             else:
