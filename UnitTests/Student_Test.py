@@ -20,8 +20,10 @@ class TestStudent(unittest.TestCase):
 
     def test_get_student_info(self):
         """Test the GetStudentInfo method."""
-        expected_info = ("Student ID: 1, First Name: John, Last Name: Doe, "
-                         "Email: john.doe@example.com, Phone No: 1234567890")
+        expected_info = (
+            "Student ID: 1, First Name: John, Last Name: Doe, "
+            "Email: john.doe@example.com, Phone No: 1234567890"
+        )
         self.assertEqual(self.student.GetStudentInfo(), expected_info)
 
     def test_update_details(self):
@@ -38,8 +40,10 @@ class TestStudent(unittest.TestCase):
 
     def test_string_representation(self):
         """Test the __str__ method."""
-        expected_str = ("Student ID: 1, First Name: John, Last Name: Doe,"
-                        " Email: john.doe@example.com, Phone No: 1234567890")
+        expected_str = (
+            "Student ID: 1, First Name: John, Last Name: Doe,"
+            " Email: john.doe@example.com, Phone No: 1234567890"
+        )
         self.assertEqual(str(self.student), expected_str)
 
     def test_partial_update(self):
