@@ -1,14 +1,17 @@
 from Book import Book
 from Student import Student
+from IssueBook import BookIssue
 
 students = []
 books = []
+book_issues = []
 
 while True:
     print("\nLibrary Management System")
     print("1. Student Operation")
     print("2. Book Operation")
-    print("3. Exit")
+    print("3. Book Issue Operation")
+    print("4. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -36,6 +39,7 @@ while True:
         elif Choice == "2":
             for student in students:
                 print(student)
+
 
         elif Choice == "3":
             studentId = int(input("Enter Student ID to delete: "))
@@ -82,14 +86,12 @@ while True:
             author = input("Enter Author Name: ")
             publishedYear = input("Enter Published Year: ")
             genre = input("Enter Genre: ")
-            totalCopies = input("Enter Total Copies: ")
+            totalCopies = int(input("Enter Total Copies: "))
 
             if any(book.BookId == bookId for book in books):
                 print(f"Book ID {bookId} already exists.")
             else:
-                books.append(
-                    Book(bookId, title, author, publishedYear, genre, totalCopies)
-                )
+                books.append(Book(bookId, title, author, publishedYear, genre, totalCopies))
                 print(f"Book '{title}' by {author} added successfully.")
 
         elif Choice == "2":
@@ -98,13 +100,8 @@ while True:
 
         elif Choice == "3":
             bookId = int(input("Enter Book ID to delete: "))
-            for index, book in enumerate(books):
-                if book.BookId == bookId:
-                    del books[index]
-                    print(f"Book with ID {bookId} has been removed")
-                    break
-            else:
-                print(f"Book ID {bookId} not found")
+            books = [book for book in books if book.BookId != bookId]
+            print(f"Book with ID {bookId} has been removed")
 
         elif Choice == "4":
             bookId = int(input("Enter Book ID to update:"))
@@ -112,16 +109,10 @@ while True:
                 if book.BookId == bookId:
                     title = input("Enter New Title:") or book.Title
                     author = input("Enter New Author:") or book.Author
-                    publishedYear = (
-                        input("Enter New Published Year:") or book.PublishedYear
-                    )
+                    publishedYear = input("Enter New Published Year:") or book.PublishedYear
                     genre = input("Enter New Genre:") or book.Genre
-                    totalCopies = input("Enter New Total Copies:") or book.TotalCopies
-                    print(
-                        book.UpdateDetails(
-                            title, author, publishedYear, genre, totalCopies
-                        )
-                    )
+                    totalCopies = int(input("Enter New Total Copies:")) or book.TotalCopies
+                    print(book.UpdateDetails(title, author, publishedYear, genre, totalCopies))
                     break
             else:
                 print(f"Book ID {bookId} not found")
@@ -134,6 +125,51 @@ while True:
             print("Invalid choice. Please try again.")
 
     elif choice == "3":
+        print("\nBook Issue Operation")
+        print("1. Issue Book")
+        print("2. View Issued Books")
+        print("3. Exit")
+        Choice = input("Enter your choice: ")
+
+        if Choice == "1":
+            studentId = int(input("Enter Student ID: "))
+            bookId = int(input("Enter Book ID: "))
+            issueDate = input("Enter Issue Date (YYYY-MM-DD): ")
+            dueDate = input("Enter Due Date (YYYY-MM-DD): ")
+
+            student = None
+            book = None
+            for s in students:
+                if s.StudentId == studentId:
+                    student = s
+                    break
+            for b in books:
+                if b.BookId == bookId:
+                    book = b
+                    break
+
+            if student and book:
+                if book.TotalCopies > 0:
+                    book.TotalCopies -= 1
+                    book_issues.append(BookIssue(book, student, issueDate, dueDate))
+                    print(f"Book ID {bookId} issued to Student ID {studentId} successfully.")
+                else:
+                    print("No copies of this book are available.")
+            else:
+                print("Invalid Student ID or Book ID.")
+
+        elif Choice == "2":
+            for issue in book_issues:
+                print(issue)
+
+        elif Choice == "3":
+            print("Exiting Book Issue Operation. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+    elif choice == "4":
         print("Exiting the system. Goodbye!")
         break
 
