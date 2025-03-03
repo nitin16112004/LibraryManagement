@@ -40,10 +40,16 @@ while True:
             for student in students:
                 print(student)
 
+
         elif Choice == "3":
             studentId = int(input("Enter Student ID to delete: "))
-            students = [student for student in students if student.StudentId != studentId]
-            print(f"Student with ID {studentId} has been removed")
+            for index, student in enumerate(students):
+                if student.StudentId == studentId:
+                    del students[index]
+                    print(f"Student with ID {studentId} has been removed")
+                    break
+                else:
+                    print(f"Student ID {studentId} not found")
 
         elif Choice == "4":
             studentId = int(input("Enter Student ID to update:"))
