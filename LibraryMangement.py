@@ -48,8 +48,8 @@ while True:
                     del students[index]
                     print(f"Student with ID {studentId} has been removed")
                     break
-                else:
-                    print(f"Student ID {studentId} not found")
+            else:
+                print(f"Student ID {studentId} not found")
 
         elif Choice == "4":
             studentId = int(input("Enter Student ID to update:"))
