@@ -69,7 +69,8 @@ class DataExcel:
             "Title": book.Title,
             "Author": book.Author,
             "Genre": book.Genre,
-            "ISBN": book.ISBN
+            "Published Year":book.PublishedYear,
+            "Total Copies": book.TotalCopies
         } for book in books]
 
         df_books = pd.DataFrame(data)
@@ -96,7 +97,7 @@ class DataExcel:
         """
         try:
             df = pd.read_excel(DataExcel.FILE_NAME, sheet_name=DataExcel.BOOK_SHEET)
-            books = [Book(row["Book ID"], row["Title"], row["Author"], row["Genre"], row["ISBN"]) for _, row in
+            books = [Book(row["Book ID"], row["Title"], row["Author"], row["Genre"], row["Published Year"],row["Total Copies"]) for _, row in
                      df.iterrows()]
             return books
         except (FileNotFoundError, ValueError):
